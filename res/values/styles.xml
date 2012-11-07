@@ -1,0 +1,12 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="ThemeDesktop" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ActionBarDesktop</item>
+        <item name="android:windowBackground">@android:color/white</item>
+   	</style>
+   	
+    <style name="ActionBarDesktop" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:background">@drawable/ab_solid</item>
+	</style>
+
+</resources>

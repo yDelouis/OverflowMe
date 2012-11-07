@@ -1,0 +1,11 @@
+<resources>
+    
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    
+    <color name="grayLight">#EEEEEE</color>
+    <color name="gray">#777777</color>
+    <color name="orange">#FF9900</color>
+    
+</resources>

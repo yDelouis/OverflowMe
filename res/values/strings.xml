@@ -2,6 +2,29 @@
 
     <string name="app_name">Overflow Me</string>
     
-    <string name="dashboard_title">Dashboard</string>
-
+    <string name="questions">Questions</string>
+    <string name="users">Users</string>
+    <string name="badges">Badges</string>
+    <string name="tags">Tags</string>
+	<string name="notifications">Notifications</string>
+	<string name="settings">Settings</string>
+	<string name="age">Age</string>
+	<string name="city">City</string>
+	<string name="country">Country</string>
+	<string name="location">Location</string>
+	<string name="reputation">Reputation</string>
+	<string name="answers">Answers</string>
+	<string name="votes">Votes</string>
+	<string name="logout">Log out</string>
+	<string name="authentication">Authentication</string>
+	
+	<string name="menuMe_reputation">%s reputation</string>
+	
+	<string name="auth_loading">Authentication succeed.\nLoading your information&#8230;</string>
+	
+	<string name="user_aboutHim">About him</string>
+	<string name="user_aboutMe">About me</string>
+	<string name="user_memberFor">Member for</string>
+	<string name="user_loadingUser">Loading user&#8230;</string>
+    
 </resources>

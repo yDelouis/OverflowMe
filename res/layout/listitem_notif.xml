@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
+    
+    <ImageView 
+        android:id="@+id/notifItem_unread"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="4dp"
+        android:src="@drawable/ic_point_blue"/>
+    
+    <TextView 
+        android:id="@+id/notifItem_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/notifItem_date"
+        android:layout_toRightOf="@+id/notifItem_unread"
+        android:textStyle="bold"
+        android:textColor="@color/grayLight"
+        android:text="Comment" />
+    
+    <TextView
+        android:id="@+id/notifItem_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/grayMiddleLight"
+        android:text="17h48" />
+    
+    <fr.ydelouis.overflowme.view.ScrollTextView
+        android:id="@+id/notifItem_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notifItem_type"
+        android:textColor="@color/grayMiddleLight"
+        android:text="How to make an awesome StackOverflow client in a very long question" />
+    
+
+</RelativeLayout>

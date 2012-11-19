@@ -1,12 +1,111 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="ThemeDesktop" parent="android:Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/ActionBarDesktop</item>
-        <item name="android:windowBackground">@android:color/white</item>
-   	</style>
-   	
-    <style name="ActionBarDesktop" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
-        <item name="android:background">@drawable/ab_solid</item>
+    <style name="menuMe_badgePoint">
+        <item name="android:layout_width">15dp</item>
+        <item name="android:layout_height">15dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:layout_marginLeft">12dp</item>
+    </style>
+    
+    <style name="menuMe_badgeText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/grayLight</item>
+    </style>
+    
+    <style name="menuMe_badgeTextChange">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_marginLeft">2dp</item>
+    </style>
+    
+    <style name="menu_button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">38dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/grayMiddleLight</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:background">@drawable/bkg_button_orange</item>
 	</style>
-
+    
+    <style name="menu_item">
+    	<item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/grayLight</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">@drawable/bkg_button_orange</item>
+    </style>
+    
+    <style name="user_label">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="user_entry">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    
+    <style name="user_row">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:background">?attr/user_row_background</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    
+    <style name="user_rowTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    
+    <style name="user_rowCount">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:paddingRight">6dp</item>
+    </style>
+    
+    <style name="user_badgePoint">
+        <item name="android:layout_width">12dp</item>
+        <item name="android:layout_height">12dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+    </style>
+    
+    <style name="user_badgeText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    
+    <style name="user_rowDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/grayMiddleLight</item>
+    </style>
+    
 </resources>

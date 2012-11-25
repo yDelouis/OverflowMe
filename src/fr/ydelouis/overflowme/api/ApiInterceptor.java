@@ -55,7 +55,7 @@ public class ApiInterceptor implements ClientHttpRequestInterceptor
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
     	HttpRequest apiRequest = new ApiHttpRequest(request);
     	if(LOG_FULL_REQUEST) Log.i(TAG, request.getMethod()+" : "+apiRequest.getURI());
-    	else if(LOG_REQUEST) Log.i(TAG, request.getMethod()+" : "+request.getURI());
+    	else if(LOG_REQUEST) Log.i(TAG, request.getMethod()+" : "+request.getURI().toString().replace(Api.ROOT_URL, ""));
     	ApiHttpResponse response = new ApiHttpResponse(execution.execute(apiRequest, body));
     	if(LOG_RESPONSE) Log.i(TAG, response.getStatusCode().value()+" : "+stringOf(response.getBody()));
     	return response;

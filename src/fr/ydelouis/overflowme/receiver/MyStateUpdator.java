@@ -1,5 +1,9 @@
 package fr.ydelouis.overflowme.receiver;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -11,16 +15,28 @@ import com.googlecode.androidannotations.annotations.Background;
 import com.googlecode.androidannotations.annotations.Bean;
 import com.googlecode.androidannotations.annotations.EReceiver;
 import com.googlecode.androidannotations.annotations.SystemService;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.support.ConnectionSource;
 
+import fr.ydelouis.overflowme.R;
+import fr.ydelouis.overflowme.api.entity.User;
+import fr.ydelouis.overflowme.entity.Notif;
 import fr.ydelouis.overflowme.loader.MeLoader;
 import fr.ydelouis.overflowme.loader.NotifLoader;
+import fr.ydelouis.overflowme.model.DatabaseHelper;
+import fr.ydelouis.overflowme.model.MeStore;
+import fr.ydelouis.overflowme.model.NotifDao;
+import fr.ydelouis.overflowme.util.NotifManager;
+import fr.ydelouis.overflowme.util.PrefManager;
 
 @EReceiver
 public class MyStateUpdator extends BroadcastReceiver
 {
 	public static final String ACTION_UPDATE = "action_update";
 	public static final String EVENT_MYSTATEUPDATED = "fr.ydelouis.overflowme.event.MYSTATE_UPDATED";
-
+	private static final int MINUTE = 60*1000;
+	
 	private static PendingIntent scheduledIntent;
 	private static boolean working = false;
 	
@@ -32,6 +48,8 @@ public class MyStateUpdator extends BroadcastReceiver
 	protected MeLoader meLoader;
 	@Bean
 	protected NotifLoader notifLoader;
+	@Bean
+	protected MeStore meStore;
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -53,8 +71,36 @@ public class MyStateUpdator extends BroadcastReceiver
 		working = true;
 		meLoader.load();
 		notifLoader.load();
+		sendNotification(context);
 		context.sendBroadcast(new Intent(EVENT_MYSTATEUPDATED));
 		working = false;
+	}
+	
+	private void sendNotification(Context context) {
+		if(!PrefManager.getBoolean(context, R.string.pref_notifs_onOff, true))
+			return;
+		
+		int reputationChange = 0;
+		if(PrefManager.getBoolean(context, R.string.pref_notifs_reputationChange, true)) {
+			User meNow = meStore.getMe();
+			User lastMe = meStore.getLastSeenMe();
+			reputationChange = meNow.getReputation() - lastMe.getReputation();
+		}
+		
+		List<Notif> unreadNotifs = new ArrayList<Notif>();
+		if(PrefManager.getBoolean(context, R.string.pref_notifs_notifs, true)) {
+			long lastSeenDate = meStore.getLastSeenDate();
+			try {
+				ConnectionSource conSrc = OpenHelperManager.getHelper(context, DatabaseHelper.class).getConnectionSource();
+				NotifDao notifDao = DaoManager.createDao(conSrc, Notif.class);
+				List<Notif> notifs = notifDao.queryForAll();
+				for(Notif notif : notifs) {
+					if(notif.isUnread(lastSeenDate))
+						unreadNotifs.add(notif);
+				}
+			} catch (SQLException e) { e.printStackTrace(); }
+		}
+		NotifManager.notify(context, reputationChange, unreadNotifs);
 	}
 	
 	private void scheduleUpdate(Context context) {
@@ -64,8 +110,11 @@ public class MyStateUpdator extends BroadcastReceiver
 			scheduledIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 		}
 		cancelUpdate();
-
-		alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, AlarmManager.INTERVAL_FIFTEEN_MINUTES, AlarmManager.INTERVAL_FIFTEEN_MINUTES, scheduledIntent);
+		
+		long interval = Integer.valueOf(PrefManager.getString(context, R.string.pref_notifs_frequencyUpdate, "30"));
+		interval *= MINUTE;
+		if(interval != 0)
+			alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, interval, interval, scheduledIntent);
 	}
 	
 	private void cancelUpdate() {

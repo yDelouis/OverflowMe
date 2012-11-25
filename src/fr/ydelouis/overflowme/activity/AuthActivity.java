@@ -28,7 +28,7 @@ public class AuthActivity extends Activity
 	private static final int CLIENT_ID = 846;
 	private static final String[] SCOPE = {"read_inbox", "no_expiry", "write_access", "private_info"} ;
 	private static final String SCOPE_DELIMITER = ",";
-	private static final String REDIRECT_URI = "http://overflowme.ydelouis.fr";
+	private static final String REDIRECT_URI = "https://stackexchange.com/oauth/login_success";
 	private static final String ACCESS_TOKEN = "access_token";
 	
 	protected WebView webView;
@@ -85,7 +85,7 @@ public class AuthActivity extends Activity
 	}
 	
 	private String getAccessToken(String url) {
-		return url.substring(url.indexOf(ACCESS_TOKEN)+13);
+		return url.substring(url.indexOf(ACCESS_TOKEN)+ACCESS_TOKEN.length()+1);
 	}
 	
 	private class AuthWebViewClient extends WebViewClient

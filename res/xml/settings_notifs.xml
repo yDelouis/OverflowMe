@@ -1,0 +1,41 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <CheckBoxPreference 
+        android:key="@string/pref_notifs_onOff"
+        android:title="@string/notifications"
+        android:defaultValue="true" />
+    
+    <ListPreference
+        android:key="@string/pref_notifs_frequencyUpdate"
+        android:title="@string/settings_notifs_frequencyOfUpdate"
+        android:entries="@array/settings_notifs_frequencyUpdateEntries"
+        android:entryValues="@array/settings_notifs_frequencyUpdateValues"
+        android:defaultValue="30" />
+    
+    <CheckBoxPreference
+        android:key="@string/pref_notifs_reputationChange"
+        android:title="@string/settings_notifs_reputationChange_title"
+        android:summary="@string/settings_notifs_reputationChange_summary"
+        android:defaultValue="true" />
+    
+    <CheckBoxPreference
+        android:key="@string/pref_notifs_notifs"
+        android:title="@string/settings_notifs_notifs_title"
+        android:summary="@string/settings_notifs_notifs_summary"
+        android:defaultValue="true" />
+    
+    <CheckBoxPreference
+        android:key="@string/pref_notifs_vibrate"
+        android:title="@string/vibrate"
+        android:defaultValue="false" />
+    
+    <RingtonePreference 
+        android:key="@string/pref_notifs_ringtone"
+        android:title="@string/ringtone"
+        android:summary="@string/settings_notifs_ringtone_summary"
+        android:ringtoneType="notification"
+        android:showDefault="true"
+   	    android:showSilent="true"
+   	    android:defaultValue="content://settings/system/notification_sound"/>
+
+</PreferenceScreen>

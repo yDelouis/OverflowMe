@@ -19,10 +19,12 @@ import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Bean;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EFragment;
+import com.googlecode.androidannotations.annotations.ItemClick;
 import com.googlecode.androidannotations.annotations.OrmLiteDao;
 import com.googlecode.androidannotations.annotations.UiThread;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.slidingmenu.lib.SlidingMenu.OnClosedListener;
+import com.slidingmenu.lib.SlidingMenu.OnOpenedListener;
 
 import fr.ydelouis.overflowme.R;
 import fr.ydelouis.overflowme.adapter.NotifAdapter;
@@ -32,16 +34,19 @@ import fr.ydelouis.overflowme.model.MeStore;
 import fr.ydelouis.overflowme.model.NotifDao;
 import fr.ydelouis.overflowme.receiver.MyStateUpdator;
 import fr.ydelouis.overflowme.util.DateUtil;
+import fr.ydelouis.overflowme.util.NotifManager;
 import fr.ydelouis.overflowme.view.MenuMeView;
 
 @EFragment(R.layout.fragment_menu)
-public class MenuFragment extends Fragment implements OnClosedListener
+public class MenuFragment extends Fragment implements OnClosedListener, OnOpenedListener
 {
 	@Bean
 	protected MeStore meStore;
 	@OrmLiteDao(helper = DatabaseHelper.class, model = Notif.class)
 	protected NotifDao notifDao;
 	private List<Notif> notifs = new ArrayList<Notif>();
+	private boolean hasBeenOpened = false;
+	private MenuListener menuListener;
 	
 	@ViewById(R.id.menu_me)
 	protected MenuMeView meView;
@@ -86,30 +91,47 @@ public class MenuFragment extends Fragment implements OnClosedListener
 		}
 	}
 	
-	@Click(R.id.menu_me)
-	public void onMeClicked() {
-		
+	@Click({R.id.menu_me, R.id.menu_settings, R.id.menu_logout, R.id.menu_questions,
+			R.id.menu_badges, R.id.menu_users, R.id.menu_tags})
+	public void onMenuItemClicked(View v) {
+		if(menuListener != null)
+			menuListener.onMenuItemClicked(v.getId());
 	}
 	
-	@Click(R.id.menu_settings) 
-	public void startSettings() {
-		
+	@ItemClick(R.id.menu_notifsList)
+	public void onNotifItemClicked(Notif notif) {
+		if(menuListener != null)
+			menuListener.onNotifClicked(notif);
 	}
 	
-	@Click(R.id.menu_logout)
-	public void logout() {
-		
+	public void setSelectedItem(int selectedItem) {
+		switch (selectedItem) {
+			case R.id.menu_questions:
+			case R.id.menu_badges:
+			case R.id.menu_users:
+			case R.id.menu_tags:
+				getView().findViewById(selectedItem).setBackgroundResource(R.color.orange);
+				break;
+		}
 	}
 	
-	@Click({R.id.menu_questions, R.id.menu_badges, R.id.menu_users, R.id.menu_tags})
-	public void onItemClicked() {
-		
+	public void setMenuListener(MenuListener menuListener) {
+		this.menuListener = menuListener;
 	}
-
+	
+	@Override
+	public void onOpened() {
+		hasBeenOpened = true;
+		NotifManager.cancel(getActivity());
+	}
+	
 	@Override
 	public void onClosed() {
-		meStore.saveLastSeenMe(meStore.getMe());
-		meStore.setLastSeenDate(DateUtil.toSoTime(new Date()));
+		if(hasBeenOpened) {
+			hasBeenOpened = false;
+			meStore.saveLastSeenMe(meStore.getMe());
+			meStore.setLastSeenDate(DateUtil.toSoTime(new Date()));
+		}
 	}
 	
 	private BroadcastReceiver updateReceiver = new BroadcastReceiver() {
@@ -118,4 +140,9 @@ public class MenuFragment extends Fragment implements OnClosedListener
 			update();
 		}
 	};
+	
+	public interface MenuListener {
+		public void onMenuItemClicked(int menuItemId);
+		public void onNotifClicked(Notif notif);
+	}
 }

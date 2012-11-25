@@ -89,7 +89,7 @@ public class Notif implements Comparable<Notif>
 	public boolean isUnread(long lastSeenDate) {
 		if(lastSeenDate == 0)
 			return unread;
-		return creationDate > lastSeenDate && unread;
+		return (creationDate > lastSeenDate) && unread;
 	}
 
 	public void setUnread(boolean unread) {

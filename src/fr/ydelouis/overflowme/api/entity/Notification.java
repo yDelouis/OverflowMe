@@ -17,6 +17,7 @@ public class Notification
 		new_privilege("New privilege"),
 		badge_earned("Badge earned"),
 		edit_suggested("Edit suggested"),
+		reputation_bonus("Reputation bonus"),
 		post_migrated("Post migrated");
 		
 		private String notifType;

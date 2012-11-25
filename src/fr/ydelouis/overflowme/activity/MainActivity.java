@@ -8,8 +8,9 @@ import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.OnActivityResult;
 
 import fr.ydelouis.overflowme.R;
-import fr.ydelouis.overflowme.receiver.MyStateUpdator_;
+import fr.ydelouis.overflowme.fragment.UserFragment;
 import fr.ydelouis.overflowme.model.MeStore;
+import fr.ydelouis.overflowme.receiver.MyStateUpdator_;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends MenuActivity 
@@ -29,7 +30,14 @@ public class MainActivity extends MenuActivity
 	
 	@OnActivityResult(REQUESTCODE_AUTH)
 	protected void onAuthResult(int resultCode) {
-		if(resultCode != RESULT_OK)
+		if(resultCode == RESULT_OK)
+			((UserFragment) getFragmentManager().findFragmentById(R.id.main_meFragment)).init();
+		else
 			finish();
+	}
+
+	@Override
+	protected int getCurrentMenuItemId() {
+		return R.id.menu_me;
 	}
 }

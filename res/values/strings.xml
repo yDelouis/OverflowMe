@@ -17,6 +17,8 @@
 	<string name="votes">Votes</string>
 	<string name="logout">Log out</string>
 	<string name="authentication">Authentication</string>
+	<string name="vibrate">Vibrate</string>
+	<string name="ringtone">Ringtone</string>
 	
 	<string name="menuMe_reputation">%s reputation</string>
 	
@@ -26,5 +28,21 @@
 	<string name="user_aboutMe">About me</string>
 	<string name="user_memberFor">Member for</string>
 	<string name="user_loadingUser">Loading user&#8230;</string>
+	
+	<string name="settings_notifs_frequencyOfUpdate">Frenquency of update</string>
+	<string name="settings_notifs_reputationChange_title">Reputation change</string>
+	<string name="settings_notifs_reputationChange_summary">Be notified when your reputation changes</string>
+	<string name="settings_notifs_notifs_title">New notification</string>
+	<string name="settings_notifs_notifs_summary">Be notified whan you get a notification</string>
+	<string name="settings_notifs_ringtone_summary">Choose the ringtone</string>
+	
+	<string name="notif_reputationAndNotifs">Reputation change &amp; unread notifications</string>
+	<string name="notif_unreadNotifs">Unread notifications</string>
+	<string name="notif_reputationGain">Reputation gain</string>
+	<string name="notif_reputationLoss">Reputation loss</string>
+	<string name="notif_reputationGained">You gained %s reputation</string>
+	<string name="notif_reputationLost">You lost %s reputation</string>
+	<string name="notif_unreadNotifsCount">%s unread notifications</string>
+	<string name="notif_reputationAndNotifsText">%1$s reputation &amp; %2$s unread notifications</string>
     
 </resources>

@@ -106,7 +106,7 @@ public class UserFragment extends Fragment
 	}
 	
 	@AfterViews
-	protected void init() {
+	public void init() {
 		if(userId == 0) {
 			user = meStore.getMe();
 			fillViews();
@@ -136,7 +136,7 @@ public class UserFragment extends Fragment
 			aboutMeContainer.setEnabled(false);
 		aboutMe.setText(userId == 0 ? R.string.user_aboutMe : R.string.user_aboutHim);
 		reputationCount.setText(user.getReputationString());
-		reputationChange.setText((user.getReputationChangeWeek() >  0 ? "+" : "")+user.getReputationChangeWeek());
+		reputationChange.setText((user.getReputationChangeWeek() >=  0 ? "+" : "")+user.getReputationChangeWeek());
 		BadgeCount bc = user.getBadgeCount();
 		badgesCount.setText(String.valueOf(bc.getTotal()));
 		if(bc.getGold() != 0) {

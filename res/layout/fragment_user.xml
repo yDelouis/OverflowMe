@@ -1,270 +1,129 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/fr.ydelouis.overflowme"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
-    <TextView
-        android:id="@+id/user_displayName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:gravity="center_horizontal"
-        android:background="@color/grayMiddleLight"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="24sp"
-        android:textStyle="bold"/>
-    
+    android:layout_height="match_parent" >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
-        <ImageView
-            android:id="@+id/user_image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="bottom"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/ic_user_picture" />
+        <TextView
+            android:id="@+id/user_displayName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grayLight"
+            android:gravity="center_horizontal"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <View style="@style/user_sectionTitle_divider" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="vertical" >
+            android:orientation="horizontal" >
 
-            <TextView
-                style="@style/user_label"
-                android:text="@string/age" />
+            <ImageView
+                android:id="@+id/user_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="bottom"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_user_picture" />
 
-            <TextView
-                android:id="@+id/user_age"
-                style="@style/user_entry" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/user_cityLabel"
-                style="@style/user_label"
-                android:text="@string/city" />
+                <TextView
+                    style="@style/user_label"
+                    android:text="@string/age" />
 
-            <TextView
-                android:id="@+id/user_city"
-                style="@style/user_entry" />
+                <TextView
+                    android:id="@+id/user_age"
+                    style="@style/user_entry" />
 
-            <TextView
-                android:id="@+id/user_countryLabel"
-                style="@style/user_label"
-                android:text="@string/country" />
+                <TextView
+                    android:id="@+id/user_cityLabel"
+                    style="@style/user_label"
+                    android:text="@string/city" />
 
-            <TextView
-                android:id="@+id/user_country"
-                style="@style/user_entry" />
+                <TextView
+                    android:id="@+id/user_city"
+                    style="@style/user_entry" />
 
-            <TextView
-                style="@style/user_label"
-                android:text="@string/user_memberFor" />
+                <TextView
+                    android:id="@+id/user_countryLabel"
+                    style="@style/user_label"
+                    android:text="@string/country" />
 
-            <TextView
-                android:id="@+id/user_seniority"
-                style="@style/user_entry" />
+                <TextView
+                    android:id="@+id/user_country"
+                    style="@style/user_entry" />
+
+                <TextView
+                    style="@style/user_label"
+                    android:text="@string/user_memberFor" />
+
+                <TextView
+                    android:id="@+id/user_seniority"
+                    style="@style/user_entry" />
+            </LinearLayout>
         </LinearLayout>
+        
+        <View style="@style/user_sectionTitle_divider" />
+
+        <fr.ydelouis.overflowme.view.UserSectionTitle_
+            android:id="@+id/user_aboutMe"
+            style="@style/user_sectionTitle"
+            app:title="@string/user_aboutMe" />
+
+        <View style="@style/user_sectionTitle_divider" />
+
+        <fr.ydelouis.overflowme.view.UserReputationTitle_
+            android:id="@+id/user_reputation"
+            style="@style/user_sectionTitle" />
+
+        <View style="@style/user_sectionTitle_divider" />
+
+        <fr.ydelouis.overflowme.view.UserBadgesTitle_
+            android:id="@+id/user_badges"
+            style="@style/user_sectionTitle" />
+
+        <View style="@style/user_sectionTitle_divider" />
+
+        <fr.ydelouis.overflowme.view.UserSectionTitle_
+            android:id="@+id/user_answers"
+            style="@style/user_sectionTitle"
+            app:title="@string/answers" />
+
+        <View style="@style/user_sectionTitle_divider" />
+
+        <fr.ydelouis.overflowme.view.UserSectionTitle_
+            android:id="@+id/user_questions"
+            style="@style/user_sectionTitle"
+            app:title="@string/questions" />
+
+        <View style="@style/user_sectionTitle_divider" />
+
+        <fr.ydelouis.overflowme.view.UserSectionTitle_
+            android:id="@+id/user_tags"
+            style="@style/user_sectionTitle"
+            app:title="@string/tags" />
+
+        <View style="@style/user_sectionTitle_divider" />
+
+        <fr.ydelouis.overflowme.view.UserVotesTitle_
+            android:id="@+id/user_votes"
+            style="@style/user_sectionTitle" />
+
+        <View style="@style/user_sectionTitle_divider" />
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-            
-            <View style="@style/user_rowDivider" />
-
-            <LinearLayout
-                android:id="@+id/user_aboutMeContainer"
-                style="@style/user_row"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/user_aboutMe"
-                    style="@style/user_rowTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/user_aboutHim" />
-            </LinearLayout>
-
-            <View style="@style/user_rowDivider" />
-
-            <LinearLayout
-                style="@style/user_row"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/user_reputationCount"
-                    style="@style/user_rowCount" />
-
-                <TextView
-                    style="@style/user_rowTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/reputation" />
-
-                <TextView
-                    android:id="@+id/user_reputationChange"
-                    style="@style/user_rowCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <View style="@style/user_rowDivider" />
-
-            <LinearLayout
-                style="@style/user_row"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/user_badgesCount"
-                    style="@style/user_rowCount" />
-
-                <TextView
-                    style="@style/user_rowTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/badges" />
-
-                <ImageView
-                    android:id="@+id/user_goldPoint"
-                    style="@style/user_badgePoint"
-                    android:src="@drawable/ic_badge_gold" />
-
-                <TextView
-                    android:id="@+id/user_goldText"
-                    style="@style/user_badgeText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:id="@+id/user_silverPoint"
-                    style="@style/user_badgePoint"
-                    android:src="@drawable/ic_badge_silver" />
-
-                <TextView
-                    android:id="@+id/user_silverText"
-                    style="@style/user_badgeText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:id="@+id/user_bronzePoint"
-                    style="@style/user_badgePoint"
-                    android:src="@drawable/ic_badge_bronze" />
-
-                <TextView
-                    android:id="@+id/user_bronzeText"
-                    style="@style/user_badgeText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <View style="@style/user_rowDivider" />
-
-            <LinearLayout
-                style="@style/user_row"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/user_answersCount"
-                    style="@style/user_rowCount" />
-
-                <TextView
-                    style="@style/user_rowTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/answers" />
-            </LinearLayout>
-
-            <View style="@style/user_rowDivider" />
-
-            <LinearLayout
-                style="@style/user_row"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/user_questionsCount"
-                    style="@style/user_rowCount" />
-
-                <TextView
-                    style="@style/user_rowTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/questions" />
-            </LinearLayout>
-
-            <View style="@style/user_rowDivider" />
-
-            <LinearLayout
-                style="@style/user_row"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/user_tagsCount"
-                    style="@style/user_rowCount" />
-
-                <TextView
-                    style="@style/user_rowTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tags" />
-            </LinearLayout>
-
-            <View style="@style/user_rowDivider" />
-
-            <LinearLayout
-                style="@style/user_row"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/user_votesCount"
-                    style="@style/user_rowCount" />
-
-                <TextView
-                    style="@style/user_rowTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/votes" />
-                
-                <ImageView
-					android:layout_width="20dp"
-					android:layout_height="20dp"
-					android:layout_marginRight="2dp"
-                    android:src="@drawable/ic_vote_up" />
-
-                <TextView
-                    android:id="@+id/user_voteUpText"
-                    style="@style/user_badgeText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp" />
-
-                <ImageView
-					android:layout_width="20dp"
-					android:layout_height="20dp"
-					android:layout_marginRight="2dp"
-                    android:src="@drawable/ic_vote_down" />
-
-                <TextView
-                    android:id="@+id/user_voteDownText"
-                    style="@style/user_badgeText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
+</ScrollView>

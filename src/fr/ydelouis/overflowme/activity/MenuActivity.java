@@ -20,6 +20,7 @@ import fr.ydelouis.overflowme.fragment.MenuFragment_;
 @EActivity
 public abstract class MenuActivity extends SlidingActivity implements MenuListener
 {
+	private static final String URL_ASK = "http://stackoverflow.com/questions/ask";
 	private static final String EXTRA_STARTMENUOPENED = "extra_startMenuOpened";
 	private static final long TIME_BEFORE_CLOSE_MENU = 100;
 	private static final int ID_MENUFRAME = 1;
@@ -99,13 +100,16 @@ public abstract class MenuActivity extends SlidingActivity implements MenuListen
 					startActivity(new Intent(this, SettingsActivity.class));
 					getSlidingMenu().showAbove(false);
 					break;
+				case R.id.menu_ask:
+					WebViewActivity_.intent(this).url(URL_ASK).start();
+					break;
 			}
 		}
 	}
 	
 	@Override
 	public void onNotifClicked(Notif notif) {
-		
+		WebViewActivity_.intent(this).url(notif.getLink()).start();
 	}
 	
 	private void startActivityDiscretly(Class<?> activityClass) {

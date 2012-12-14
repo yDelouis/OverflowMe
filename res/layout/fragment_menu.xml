@@ -32,9 +32,12 @@
             android:background="@color/grayMiddleLight"/>
         
         <TextView
-            android:id="@+id/menu_logout"
-            android:drawableLeft="@drawable/ic_menu_logout"
-            android:text="@string/logout"
+            android:id="@+id/menu_ask"
+            android:drawableLeft="@drawable/ic_menu_ask"
+            android:text="@string/ask"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:drawablePadding="-20dp"
             style="@style/menu_button" />
         
     </LinearLayout>

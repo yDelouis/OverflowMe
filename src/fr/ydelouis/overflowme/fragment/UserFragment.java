@@ -14,6 +14,7 @@ import com.androidquery.AQuery;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Background;
 import com.googlecode.androidannotations.annotations.Bean;
+import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EFragment;
 import com.googlecode.androidannotations.annotations.FragmentArg;
 import com.googlecode.androidannotations.annotations.UiThread;
@@ -22,12 +23,15 @@ import com.googlecode.androidannotations.annotations.rest.RestService;
 
 import fr.ydelouis.overflowme.R;
 import fr.ydelouis.overflowme.api.Api;
-import fr.ydelouis.overflowme.api.entity.BadgeCount;
 import fr.ydelouis.overflowme.api.entity.User;
 import fr.ydelouis.overflowme.api.rest.UserRest;
 import fr.ydelouis.overflowme.model.MeStore;
 import fr.ydelouis.overflowme.receiver.MyStateUpdator;
 import fr.ydelouis.overflowme.util.DateUtil;
+import fr.ydelouis.overflowme.view.UserBadgesTitle;
+import fr.ydelouis.overflowme.view.UserReputationTitle;
+import fr.ydelouis.overflowme.view.UserSectionTitle;
+import fr.ydelouis.overflowme.view.UserVotesTitle;
 
 @EFragment(R.layout.fragment_user)
 public class UserFragment extends Fragment
@@ -48,40 +52,20 @@ public class UserFragment extends Fragment
 	protected TextView country;
 	@ViewById(R.id.user_seniority)
 	protected TextView seniority;
-	@ViewById(R.id.user_aboutMeContainer)
-	protected View aboutMeContainer;
 	@ViewById(R.id.user_aboutMe)
-	protected TextView aboutMe;
-	@ViewById(R.id.user_reputationCount)
-	protected TextView reputationCount;
-	@ViewById(R.id.user_reputationChange)
-	protected TextView reputationChange;
-	@ViewById(R.id.user_badgesCount)
-	protected TextView badgesCount;
-	@ViewById(R.id.user_goldPoint)
-	protected View goldPoint;
-	@ViewById(R.id.user_goldText)
-	protected TextView goldText;
-	@ViewById(R.id.user_silverPoint)
-	protected View silverPoint;
-	@ViewById(R.id.user_silverText)
-	protected TextView silverText;
-	@ViewById(R.id.user_bronzePoint)
-	protected View bronzePoint;
-	@ViewById(R.id.user_bronzeText)
-	protected TextView bronzeText;
-	@ViewById(R.id.user_answersCount)
-	protected TextView answersCount;
-	@ViewById(R.id.user_questionsCount)
-	protected TextView questionsCount;
-	@ViewById(R.id.user_tagsCount)
-	protected TextView tagsCount;
-	@ViewById(R.id.user_votesCount)
-	protected TextView votesCount;
-	@ViewById(R.id.user_voteUpText)
-	protected TextView voteUpCount;
-	@ViewById(R.id.user_voteDownText)
-	protected TextView voteDownCount;
+	protected UserSectionTitle aboutMeSectionTitle;
+	@ViewById(R.id.user_reputation)
+	protected UserReputationTitle reputationSectionTitle;
+	@ViewById(R.id.user_badges)
+	protected UserBadgesTitle badgesSectionTitle;
+	@ViewById(R.id.user_answers)
+	protected UserSectionTitle answersSectionTitle;
+	@ViewById(R.id.user_questions)
+	protected UserSectionTitle questionsSectionTitle;
+	@ViewById(R.id.user_tags)
+	protected UserSectionTitle tagsSectionTitle;
+	@ViewById(R.id.user_votes)
+	protected UserVotesTitle votesSectionTitle;
 	private ProgressDialog progressDialog;
 	
 	@Bean
@@ -89,8 +73,10 @@ public class UserFragment extends Fragment
 	@RestService
 	protected UserRest userRest;
 	@FragmentArg
-	protected int userId = 0;
+	protected int userId;
 	private User user;
+	private  UserDetailOpener userDetailOpener;
+	private UserSectionTitle[] sectionTitles;
 	
 	@Override
 	public void onResume() {
@@ -107,8 +93,12 @@ public class UserFragment extends Fragment
 	
 	@AfterViews
 	public void init() {
+		sectionTitles = new UserSectionTitle[]
+				{ reputationSectionTitle, badgesSectionTitle, answersSectionTitle,
+				questionsSectionTitle, tagsSectionTitle, votesSectionTitle };
+		
+		user = meStore.getMe();
 		if(userId == 0) {
-			user = meStore.getMe();
 			fillViews();
 		} else {
 			getUser();
@@ -132,43 +122,19 @@ public class UserFragment extends Fragment
 			country.setVisibility(View.GONE);
 		}
 		seniority.setText(DateUtil.toDurationString(user.getCreationDate()));
-		if(user.getAboutMe().isEmpty())
-			aboutMeContainer.setEnabled(false);
-		aboutMe.setText(userId == 0 ? R.string.user_aboutMe : R.string.user_aboutHim);
-		reputationCount.setText(user.getReputationString());
-		reputationChange.setText((user.getReputationChangeWeek() >=  0 ? "+" : "")+user.getReputationChangeWeek());
-		BadgeCount bc = user.getBadgeCount();
-		badgesCount.setText(String.valueOf(bc.getTotal()));
-		if(bc.getGold() != 0) {
-			goldPoint.setVisibility(View.VISIBLE);
-			goldText.setVisibility(View.VISIBLE);
-			goldText.setText(String.valueOf(bc.getGold()));
-		} else {
-			goldPoint.setVisibility(View.GONE);
-			goldText.setVisibility(View.GONE);
-		}
-		if(bc.getSilver() != 0) {
-			silverPoint.setVisibility(View.VISIBLE);
-			silverText.setVisibility(View.VISIBLE);
-			silverText.setText(String.valueOf(bc.getSilver()));
-		} else {
-			silverPoint.setVisibility(View.GONE);
-			silverText.setVisibility(View.GONE);
-		}
-		if(bc.getBronze() != 0) {
-			bronzePoint.setVisibility(View.VISIBLE);
-			bronzeText.setVisibility(View.VISIBLE);
-			bronzeText.setText(String.valueOf(bc.getBronze()));
-		} else {
-			bronzePoint.setVisibility(View.GONE);
-			bronzeText.setVisibility(View.GONE);
-		}
-		answersCount.setText(String.valueOf(user.getAnswersCount()));
-		questionsCount.setText(String.valueOf(user.getQuestionsCount()));
-		tagsCount.setText(String.valueOf(user.getTagsCount()));
-		votesCount.setText(String.valueOf(user.getVoteCount()));
-		voteUpCount.setText(String.valueOf(user.getVoteUpCount()));
-		voteDownCount.setText(String.valueOf(user.getVoteDownCount()));
+		
+		reputationSectionTitle.bind(user);
+		badgesSectionTitle.bind(user.getBadgeCount());
+		answersSectionTitle.setCount(user.getAnswersCount());
+		questionsSectionTitle.setCount(user.getQuestionsCount());
+		tagsSectionTitle.setCount(user.getTagsCount());
+		votesSectionTitle.bind(user);
+		
+		int maxCountWidth = 0;
+		for(UserSectionTitle sectionTitle : sectionTitles)
+			maxCountWidth = Math.max(maxCountWidth, sectionTitle.getCountWidth());
+		for(UserSectionTitle sectionTitle : sectionTitles)
+			sectionTitle.setCountWidth(maxCountWidth);
 	}
 	
 	@Background
@@ -176,8 +142,8 @@ public class UserFragment extends Fragment
 		showProgressDialog();
 		Api.prepare(getActivity(), userRest.getRestTemplate());
 		try {
-			user = userRest.getUser(userId).get().get(0);
-			user.setTagsCount(userRest.getNbTags(userId).get());
+			user = userRest.getUser(userId).getItems().get(0);
+			user.setTagsCount(userRest.getNbTags(userId).getTotal());
 			fillViews();
 			dismissProgressDialog();
 		} catch (RuntimeException e) {
@@ -198,10 +164,26 @@ public class UserFragment extends Fragment
 			progressDialog.dismiss();
 	}
 	
+	@Click({R.id.user_aboutMe, R.id.user_reputation, R.id.user_badges,
+			R.id.user_answers, R.id.user_questions, R.id.user_tags,
+			R.id.user_votes})
+	protected void openDetail(View v) {
+		if(userDetailOpener != null)
+			userDetailOpener.openDetail(user, v.getId());
+	}
+	
+	public void setUserDetailOpener(UserDetailOpener userDetailOpener) {
+		this.userDetailOpener = userDetailOpener;
+	}
+	
 	private BroadcastReceiver updateReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			init();
 		}
 	};
+	
+	public interface UserDetailOpener {
+		public void openDetail(User user, int itemId);
+	}
 }

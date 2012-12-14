@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="20sp"
+        android:text="@string/aboutMe_website" />
+    
+    <TextView
+        android:id="@+id/aboutMe_website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="38dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:paddingLeft="8dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/bkg_user_sectiontitle_desktop"
+        android:textSize="16sp"
+        android:text="http://www.ydelouis.fr" />
+    
+    <TextView 
+        android:id="@+id/aboutMe_aboutMeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="20sp"
+        android:text="About yDelouis :" />
+    
+    <TextView
+        android:id="@+id/aboutMe_aboutMe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:background="@color/grayLight"
+		android:textSize="14sp" />
+
+</LinearLayout>

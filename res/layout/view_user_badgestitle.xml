@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/user_sectionTitle"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/user_sectionTitle_count"
+        style="@style/user_sectionTitle_count" />
+
+    <TextView
+        android:id="@+id/user_sectionTitle_title"
+        style="@style/user_sectionTitle_title" />
+
+    <ImageView
+        android:id="@+id/user_badgesTitle_goldPoint"
+        style="@style/user_sectionTitle_badgePoint"
+        android:src="@drawable/ic_badge_gold" />
+
+    <TextView
+        android:id="@+id/user_badgesTitle_goldText"
+        style="@style/user_sectionTitle_secondText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/user_badgesTitle_silverPoint"
+        style="@style/user_sectionTitle_badgePoint"
+        android:src="@drawable/ic_badge_silver" />
+
+    <TextView
+        android:id="@+id/user_badgesTitle_silverText"
+        style="@style/user_sectionTitle_secondText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/user_badgesTitle_bronzePoint"
+        style="@style/user_sectionTitle_badgePoint"
+        android:src="@drawable/ic_badge_bronze" />
+
+    <TextView
+        android:id="@+id/user_badgesTitle_bronzeText"
+        style="@style/user_sectionTitle_secondText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

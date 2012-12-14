@@ -72,15 +72,6 @@ public class Notification
 		this.body = body;
 	}
 
-	public static class List
-	{
-		private java.util.List<Notification>	items;
-
-		public java.util.List<Notification> get() {
-			return items;
-		}
-	}
-
 	@Override
 	public String getText() {
 		return Html.fromHtml(body).toString().replace("learn more", "");
@@ -102,4 +93,6 @@ public class Notification
 			return "";
 		return type.toString();
 	}
+	
+	public static class NotificationRequest extends Request<Notification>{}
 }

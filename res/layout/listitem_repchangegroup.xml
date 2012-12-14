@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:orientation="horizontal" >
+    
+    <TextView
+        android:id="@+id/repChangeGroupItem_total"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        android:text="+1320" />
+    
+     <ImageView 
+        android:id="@+id/repChangeGroupItem_expanded"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:src="@drawable/ic_arrow_right" />
+
+    <TextView 
+        android:id="@+id/repChangeGroupItep_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Dec. 20" />
+    
+</LinearLayout>

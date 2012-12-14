@@ -1,0 +1,13 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/user_sectionTitle"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/user_sectionTitle_count"
+        style="@style/user_sectionTitle_count" />
+
+    <TextView
+        android:id="@+id/user_sectionTitle_title"
+        style="@style/user_sectionTitle_title" />
+
+</LinearLayout>

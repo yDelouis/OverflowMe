@@ -1,7 +1,11 @@
 package fr.ydelouis.overflowme.api.entity;
 
-public class BadgeCount
+import java.io.Serializable;
+
+public class BadgeCount implements Serializable
 {
+	private static final long	serialVersionUID	= -3391919510832282642L;
+	
 	private int	bronze;
 	private int	silver;
 	private int	gold;

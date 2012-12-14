@@ -32,8 +32,28 @@
             android:name=".activity.SettingsActivity"
             android:label="@string/settings" />
         
+        <activity
+            android:name=".activity.WebViewActivity_"
+            android:label="@string/app_name" />
+        
+        <activity
+            android:name=".activity.ReputationActivity_"
+            android:label="@string/reputation" />
+        
+        <activity
+            android:name=".activity.AboutMeActivity_"
+            android:label="@string/app_name" />
+        
+        <activity
+            android:name=".activity.UserBadgesActivity_"
+            android:label="@string/app_name" />
+        
+        <activity
+            android:name="fr.ydelouis.overflowme.activity.UserAnswersActivity_"
+            android:label="@string/app_name" />
+        
         <receiver
-            android:name=".receiver.MyStateUpdator_" >
+            android:name="fr.ydelouis.overflowme.receiver.MyStateUpdator_" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

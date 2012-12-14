@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/user_sectionTitle"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/user_sectionTitle_count"
+        style="@style/user_sectionTitle_count" />
+
+    <TextView
+        android:id="@+id/user_sectionTitle_title"
+        style="@style/user_sectionTitle_title" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="2dp"
+        android:src="@drawable/ic_vote_up" />
+
+    <TextView
+        android:id="@+id/user_votesTitle_UpText"
+        style="@style/user_sectionTitle_secondText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="2dp"
+        android:src="@drawable/ic_vote_down" />
+
+    <TextView
+        android:id="@+id/user_votesTitle_DownText"
+        style="@style/user_sectionTitle_secondText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

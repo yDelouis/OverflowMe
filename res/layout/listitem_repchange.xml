@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grayLight"
+    android:gravity="center_vertical"
+    android:paddingLeft="4dp"
+    android:paddingRight="10dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:orientation="horizontal" >
+
+    <TextView 
+        android:id="@+id/reputationItem_change"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        android:text="100" />
+    
+    <TextView
+        android:id="@+id/reputationItem_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:drawablePadding="5dp"
+        android:lines="1"
+        android:ellipsize="end"
+        android:textSize="14sp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:text="Tu m'as bien aidé sur ce coup là, mais c'est pas assez long" />
+
+</LinearLayout>

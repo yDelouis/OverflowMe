@@ -22,7 +22,7 @@ public class NotifDao extends BaseDaoImpl<Notif, Long>
 		TableUtils.clearTable(connectionSource, Notif.class);
 	}
 
-	public int create(Collection<Notif> notifs) throws SQLException{
+	public int createAll(Collection<Notif> notifs) throws SQLException{
 		int result = 0;
 		for(Notif notif : notifs) 
 			result += create(notif);

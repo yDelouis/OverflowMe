@@ -8,8 +8,8 @@ import com.googlecode.androidannotations.annotations.rest.Rest;
 
 import fr.ydelouis.overflowme.api.Api;
 import fr.ydelouis.overflowme.api.Filter;
-import fr.ydelouis.overflowme.api.entity.InboxItem;
-import fr.ydelouis.overflowme.api.entity.Notification;
+import fr.ydelouis.overflowme.api.entity.InboxItem.InboxItemRequest;
+import fr.ydelouis.overflowme.api.entity.Notification.NotificationRequest;
 
 @Rest(rootUrl = Api.ROOT_URL, converters = GsonHttpMessageConverter.class)
 public interface NotifRest
@@ -17,14 +17,14 @@ public interface NotifRest
 	public RestTemplate getRestTemplate();
 	
 	@Get("/inbox?pagesize={pageSize}&filter="+Filter.NOTIF_INBOXITEM)
-	public InboxItem.List getInbox(int pageSize);
+	public InboxItemRequest getInbox(int pageSize);
 	
 	@Get("/inbox/unread?filter="+Filter.NOTIF_INBOXITEM)
-	public InboxItem.List getInboxUnread();
+	public InboxItemRequest getInboxUnread();
 	
 	@Get("/notifications?pagesize={pageSize}&filter="+Filter.NOTIF_NOTIFICATION)
-	public Notification.List getNotifications(int pageSize);
+	public NotificationRequest getNotifications(int pageSize);
 	
 	@Get("/notifications/unread?filter="+Filter.NOTIF_NOTIFICATION)
-	public Notification.List getUnreadNotifications();
+	public NotificationRequest getUnreadNotifications();
 }

@@ -3,15 +3,21 @@ package fr.ydelouis.overflowme.util;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class DateUtil
 {
 	public static final long ONE_MINUTE = 60;
+	public static final long FIFTEEN_MINUTES = 15*ONE_MINUTE;
 	public static final long ONE_HOUR = 60*ONE_MINUTE;
 	public static final long ONE_DAY = 24*ONE_HOUR;
 	
+	public static long getDay(long soDate) {
+		return soDate / ONE_DAY;
+	}
+	
 	public static String toShortString(long soDate) {
-		long now = toSoTime(new Date());
+		long now = now();
 		long splitSec = now - soDate;
 		if(splitSec < ONE_MINUTE)
 			return splitSec+" sec"+(splitSec == 1 ? "" : "s")+" ago";
@@ -26,12 +32,16 @@ public class DateUtil
 	
 	public static String toDateString(long soDate) {
 		Calendar cal = toCal(soDate);
+		Calendar now = toCal(now());
 		String monthShort = cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US);
-		return monthShort+" "+cal.get(Calendar.DAY_OF_MONTH);
+		String year = "";
+		if(now.get(Calendar.YEAR) != cal.get(Calendar.YEAR))
+			year = "'"+(now.get(Calendar.YEAR)%100);
+		return monthShort+" "+cal.get(Calendar.DAY_OF_MONTH)+" "+year;
 	}
 	
 	public static String toDurationString(long soDate) {
-		Calendar now = Calendar.getInstance();
+		Calendar now = toCal(now());
 		Calendar date = toCal(soDate);
 		int years = now.get(Calendar.YEAR) - date.get(Calendar.YEAR);
 		if(now.get(Calendar.DAY_OF_YEAR) < date.get(Calendar.DAY_OF_YEAR))
@@ -59,12 +69,20 @@ public class DateUtil
 	}
 	
 	public static Calendar toCal(long soDate) {
-		Calendar date = Calendar.getInstance();
+		Calendar date = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 		date.setTime(toDate(soDate));
 		return date;
 	}
 	
 	public static long toSoTime(Date date) {
 		return date.getTime()/1000;
+	}
+	
+	public static long toSoTime(Calendar calendar) {
+		return toSoTime(calendar.getTime());
+	}
+	
+	public static long now() {
+		return toSoTime(Calendar.getInstance(TimeZone.getTimeZone("UTC")));
 	}
 }

@@ -82,15 +82,6 @@ public class InboxItem
 		this.site = site;
 	}
 
-	public static class List
-	{
-		private java.util.List<InboxItem>	items;
-
-		public java.util.List<InboxItem> get() {
-			return items;
-		}
-	}
-
 	@Override
 	public String getText() {
 		return title;
@@ -102,4 +93,6 @@ public class InboxItem
 			return "";
 		return type.toString();
 	}
+	
+	public static class InboxItemRequest extends Request<InboxItem>{}
 }

@@ -34,12 +34,12 @@ public class NotifLoader
 	
 	public void load() {
 		Api.prepare(context, notifRest.getRestTemplate(), false);
-		InboxItem.List inboxItems = notifRest.getInboxUnread();
-		Notification.List notifications = notifRest.getUnreadNotifications();
+		List<InboxItem> inboxItems = notifRest.getInboxUnread().getItems();
+		List<Notification> notifications = notifRest.getUnreadNotifications().getItems();
 		List<Notif> notifs = merge(inboxItems, notifications);
 		if(notifs.size() < NB_NOTIF) {
-			inboxItems = notifRest.getInbox(NB_NOTIF);
-			notifications = notifRest.getNotifications(NB_NOTIF);
+			inboxItems = notifRest.getInbox(NB_NOTIF).getItems();
+			notifications = notifRest.getNotifications(NB_NOTIF).getItems();
 			notifs = merge(inboxItems, notifications);
 		}
 		if(notifs.size() > NB_NOTIF)
@@ -47,17 +47,17 @@ public class NotifLoader
 		
 		try {
 			notifDao.clear();
-			notifDao.create(notifs);
+			notifDao.createAll(notifs);
 		} catch (SQLException e) {}
 	}
 	
-	private ArrayList<Notif> merge(InboxItem.List inboxItems, Notification.List notifications) {
+	private ArrayList<Notif> merge(List<InboxItem> inboxItems, List<Notification> notifications) {
 		ArrayList<Notif> notifs = new ArrayList<Notif>();
-		for(InboxItem inboxItem : inboxItems.get()) {
+		for(InboxItem inboxItem : inboxItems) {
 			if(inboxItem.getSite().getSiteUrl().equals(Api.SITE_URL))
 				notifs.add(new Notif(inboxItem));
 		}
-		for(Notification notification : notifications.get()) {
+		for(Notification notification : notifications) {
 			if(notification.getSite().getSiteUrl().equals(Api.SITE_URL))
 				notifs.add(new Notif(notification));
 		}

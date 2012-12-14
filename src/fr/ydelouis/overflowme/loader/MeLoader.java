@@ -24,8 +24,8 @@ public class MeLoader
 	
 	public void load() {
 		Api.prepare(context, meRest.getRestTemplate());
-		User me = meRest.getMe().get().get(0);
-		me.setTagsCount(meRest.getNbTags().get());
+		User me = meRest.getMe().getItems().get(0);
+		me.setTagsCount(meRest.getNbTags().getTotal());
 		meStore.saveMe(me);
 	}
 }

@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:paddingLeft="8dp"
+    android:orientation="horizontal" >
+    
+    <TextView
+        android:id="@+id/answerItem_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:background="@color/greenDark"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:text="1" />
+    
+    <TextView
+        android:id="@+id/answerItem_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:lines="1"
+        android:ellipsize="end"
+        android:textSize="14sp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:text="Sqlite Update Query not working" />
+
+</LinearLayout>

@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/userAnswerList_sort"
+        android:icon="@drawable/ic_menu_sort"
+        android:showAsAction="always"
+        android:title="@string/sort" >
+        <menu>
+            <item
+                android:id="@+id/userAnswerList_sortScore"
+                android:title="@string/score" />
+            <item
+                android:id="@+id/userAnswerList_sortActivity"
+                android:title="@string/activity"/>
+        </menu>
+    </item>
+</menu>

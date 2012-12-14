@@ -1,11 +1,12 @@
 package fr.ydelouis.overflowme.model;
 
-import com.googlecode.androidannotations.annotations.EBean;
-import com.googlecode.androidannotations.api.Scope;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
+import com.googlecode.androidannotations.annotations.EBean;
+import com.googlecode.androidannotations.api.Scope;
+
 import fr.ydelouis.overflowme.api.entity.BadgeCount;
 import fr.ydelouis.overflowme.api.entity.User;
 
@@ -37,6 +38,7 @@ public class MeStore
 	
 	private static final String ACCESS_TOKEN = "accessToken";
 	private static final String LAST_SEEN_DATE = "lastSeenDate";
+	private static final String LAST_DL_BADGE = "lastDlBadge";
 	
 	private SharedPreferences pref;
 	private User me;
@@ -46,6 +48,14 @@ public class MeStore
 	
 	public MeStore(Context context) {
 		pref = PreferenceManager.getDefaultSharedPreferences(context);
+	}
+	
+	public boolean isMe(User user) {
+		return getMe().getId() == user.getId();
+	}
+	
+	public boolean isMe(int userId) {
+		return getMe().getId() == userId;
 	}
 	
 	public User getMe() {
@@ -145,6 +155,14 @@ public class MeStore
 	public void setLastSeenDate(long lastSeenDate) {
 		this.lastSeenDate = lastSeenDate;
 		pref.edit().putLong(LAST_SEEN_DATE, lastSeenDate).commit();
+	}
+	
+	public long getLastBadgeDownload() {
+		return pref.getLong(LAST_DL_BADGE, 0);
+	}
+	
+	public void setLastBadgeDownload(long lastBadgeDl) {
+		pref.edit().putLong(LAST_DL_BADGE, lastBadgeDl).commit();
 	}
 	
 	private int getInt(String attrName) {

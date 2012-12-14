@@ -9,6 +9,8 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
+import fr.ydelouis.overflowme.api.entity.Badge;
+import fr.ydelouis.overflowme.api.entity.RepChange;
 import fr.ydelouis.overflowme.entity.Notif;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper
@@ -24,9 +26,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
 		try {
 			TableUtils.createTable(connectionSource, Notif.class);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			TableUtils.createTable(connectionSource, RepChange.class);
+			TableUtils.createTable(connectionSource, Badge.class);
+		} catch (SQLException e) {}
 	}
 
 	@Override

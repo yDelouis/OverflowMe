@@ -2,5 +2,5 @@
 
     <dimen name="slidingMenu_behindOffset">60dp</dimen>
     <dimen name="slidingMenu_shadowWidth">15dp</dimen>
-
+    
 </resources>

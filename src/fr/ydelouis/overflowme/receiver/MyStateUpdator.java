@@ -69,14 +69,16 @@ public class MyStateUpdator extends BroadcastReceiver
 		if(!connectivityManager.getActiveNetworkInfo().isConnected())
 			return;
 		working = true;
+		User lastSeenMe = meStore.getLastSeenMe();
 		meLoader.load();
 		notifLoader.load();
-		sendNotification(context);
+		if(lastSeenMe != null)
+			sendNotification(context, lastSeenMe);
 		context.sendBroadcast(new Intent(EVENT_MYSTATEUPDATED));
 		working = false;
 	}
 	
-	private void sendNotification(Context context) {
+	private void sendNotification(Context context, User lastSeenMe) {
 		if(!PrefManager.getBoolean(context, R.string.pref_notifs_onOff, true))
 			return;
 		
@@ -98,7 +100,7 @@ public class MyStateUpdator extends BroadcastReceiver
 					if(notif.isUnread(lastSeenDate))
 						unreadNotifs.add(notif);
 				}
-			} catch (SQLException e) { e.printStackTrace(); }
+			} catch (SQLException e) {}
 		}
 		NotifManager.notify(context, reputationChange, unreadNotifs);
 	}

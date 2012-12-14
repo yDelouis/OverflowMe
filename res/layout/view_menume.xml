@@ -19,7 +19,7 @@
             android:layout_marginRight="10dp"
             android:src="@drawable/ic_user_picture" />
 
-        <fr.ydelouis.overflowme.view.AutoFitTextView
+        <fr.ydelouis.overflowme.common.AutoFitTextView
             android:id="@+id/menuMe_displayName"
             android:layout_width="match_parent"
             android:layout_height="56dp"

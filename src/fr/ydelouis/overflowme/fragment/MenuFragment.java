@@ -2,7 +2,6 @@ package fr.ydelouis.overflowme.fragment;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import android.app.Fragment;
@@ -11,7 +10,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ import com.slidingmenu.lib.SlidingMenu.OnOpenedListener;
 
 import fr.ydelouis.overflowme.R;
 import fr.ydelouis.overflowme.adapter.NotifAdapter;
+import fr.ydelouis.overflowme.api.entity.User;
 import fr.ydelouis.overflowme.entity.Notif;
 import fr.ydelouis.overflowme.model.DatabaseHelper;
 import fr.ydelouis.overflowme.model.MeStore;
@@ -54,9 +56,11 @@ public class MenuFragment extends Fragment implements OnClosedListener, OnOpened
 	protected ListView notifsList;
 	@ViewById(R.id.menu_notifsCounter)
 	protected TextView notifsCounter;
+	protected ImageView up;
 	
 	@AfterViews
 	protected void init() {
+		up = (ImageView) ((ViewGroup) getActivity().findViewById(android.R.id.home).getParent()).getChildAt(0);
 		notifsList.setAdapter(new NotifAdapter(getActivity(), notifs));
 		update();
 	}
@@ -76,7 +80,9 @@ public class MenuFragment extends Fragment implements OnClosedListener, OnOpened
 	
 	@UiThread
 	public void update() {
-		meView.bind(meStore.getMe(), meStore.getLastSeenMe());
+		User me = meStore.getMe();
+		User lastSeenMe = meStore.getLastSeenMe();
+		meView.bind(me, lastSeenMe);
 		try {
 			List<Notif> newNotifs = notifDao.queryByCreationDate();
 			notifs.clear();
@@ -86,12 +92,15 @@ public class MenuFragment extends Fragment implements OnClosedListener, OnOpened
 			notifsCounter.setText(String.valueOf(nbUnread));
 			if(nbUnread == 0)
 				notifsCounter.setVisibility(View.INVISIBLE);
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
+			
+			if(lastSeenMe != null && (lastSeenMe.getReputation() != me.getReputation() || nbUnread != 0))
+				up.setImageResource(R.drawable.ic_slidingmenuindicator_desktop_new);
+			else
+				up.setImageResource(R.drawable.ic_slidingmenuindicator_desktop);
+		} catch(SQLException e) {}
 	}
 	
-	@Click({R.id.menu_me, R.id.menu_settings, R.id.menu_logout, R.id.menu_questions,
+	@Click({R.id.menu_me, R.id.menu_settings, R.id.menu_ask, R.id.menu_questions,
 			R.id.menu_badges, R.id.menu_users, R.id.menu_tags})
 	public void onMenuItemClicked(View v) {
 		if(menuListener != null)
@@ -130,7 +139,7 @@ public class MenuFragment extends Fragment implements OnClosedListener, OnOpened
 		if(hasBeenOpened) {
 			hasBeenOpened = false;
 			meStore.saveLastSeenMe(meStore.getMe());
-			meStore.setLastSeenDate(DateUtil.toSoTime(new Date()));
+			meStore.setLastSeenDate(DateUtil.now());
 		}
 	}
 	

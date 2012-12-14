@@ -64,48 +64,56 @@
         <item name="android:ellipsize">end</item>
     </style>
     
-    <style name="user_row">
+    <style name="user_sectionTitle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">8dp</item>
-        <item name="android:background">?attr/user_row_background</item>
+        <item name="android:background">?attr/user_sectionTitle_background</item>
         <item name="android:gravity">center_vertical</item>
     </style>
     
-    <style name="user_rowTitle">
-        <item name="android:textSize">18sp</item>
+    <style name="user_sectionTitle_title">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:lines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
     
-    <style name="user_rowCount">
-        <item name="android:layout_width">70dp</item>
+    <style name="user_sectionTitle_count">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">right</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
-        <item name="android:paddingRight">6dp</item>
+        <item name="android:layout_marginRight">8dp</item>
     </style>
     
-    <style name="user_badgePoint">
-        <item name="android:layout_width">12dp</item>
-        <item name="android:layout_height">12dp</item>
+    <style name="user_sectionTitle_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/graySectionDivider</item>
+    </style>
+    
+    <style name="user_sectionTitle_secondText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    
+    <style name="user_sectionTitle_badgePoint">
+        <item name="android:layout_width">14dp</item>
+        <item name="android:layout_height">14dp</item>
         <item name="android:layout_marginRight">2dp</item>
         <item name="android:layout_marginLeft">8dp</item>
     </style>
     
-    <style name="user_badgeText">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-    </style>
     
-    <style name="user_rowDivider">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0.5dp</item>
-        <item name="android:background">@color/grayMiddleLight</item>
-    </style>
     
 </resources>

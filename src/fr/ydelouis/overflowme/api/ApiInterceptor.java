@@ -19,8 +19,7 @@ import org.springframework.http.client.ClientHttpResponse;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
-import fr.ydelouis.overflowme.model.MeStore;
-import fr.ydelouis.overflowme.model.MeStore_;
+import fr.ydelouis.overflowme.model.*;
 
 public class ApiInterceptor implements ClientHttpRequestInterceptor 
 {

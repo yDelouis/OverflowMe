@@ -1,0 +1,31 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:oneshot="false">
+    
+    <item android:drawable="@drawable/img_dl_00" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_01" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_02" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_03" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_04" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_05" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_06" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_07" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_08" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_09" android:duration="100" />
+	<item android:drawable="@drawable/img_dl_10" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_11" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_12" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_13" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_14" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_15" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_16" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_17" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_18" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_19" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_20" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_21" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_22" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_23" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_24" android:duration="100" />
+    <item android:drawable="@drawable/img_dl_25" android:duration="100" />
+
+</animation-list>

@@ -1,0 +1,30 @@
+<level-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item android:drawable="@drawable/img_dl_00" android:maxLevel="4" />
+    <item android:drawable="@drawable/img_dl_01" android:maxLevel="8" />
+    <item android:drawable="@drawable/img_dl_02" android:maxLevel="12" />
+    <item android:drawable="@drawable/img_dl_03" android:maxLevel="16" />
+    <item android:drawable="@drawable/img_dl_04" android:maxLevel="20" />
+    <item android:drawable="@drawable/img_dl_05" android:maxLevel="23" />
+    <item android:drawable="@drawable/img_dl_06" android:maxLevel="24" />
+    <item android:drawable="@drawable/img_dl_07" android:maxLevel="31" />
+    <item android:drawable="@drawable/img_dl_08" android:maxLevel="35" />
+    <item android:drawable="@drawable/img_dl_09" android:maxLevel="39" />
+	<item android:drawable="@drawable/img_dl_10" android:maxLevel="42" />
+    <item android:drawable="@drawable/img_dl_11" android:maxLevel="46" />
+    <item android:drawable="@drawable/img_dl_12" android:maxLevel="50" />
+    <item android:drawable="@drawable/img_dl_13" android:maxLevel="54" />
+    <item android:drawable="@drawable/img_dl_14" android:maxLevel="58" />
+    <item android:drawable="@drawable/img_dl_15" android:maxLevel="61" />
+    <item android:drawable="@drawable/img_dl_16" android:maxLevel="65" />
+    <item android:drawable="@drawable/img_dl_17" android:maxLevel="69" />
+    <item android:drawable="@drawable/img_dl_18" android:maxLevel="73" />
+    <item android:drawable="@drawable/img_dl_19" android:maxLevel="77" />
+    <item android:drawable="@drawable/img_dl_20" android:maxLevel="80" />
+    <item android:drawable="@drawable/img_dl_21" android:maxLevel="84" />
+    <item android:drawable="@drawable/img_dl_22" android:maxLevel="88" />
+    <item android:drawable="@drawable/img_dl_23" android:maxLevel="92" />
+    <item android:drawable="@drawable/img_dl_24" android:maxLevel="96" />
+    <item android:drawable="@drawable/img_dl_25" android:maxLevel="100" />
+    
+</level-list>

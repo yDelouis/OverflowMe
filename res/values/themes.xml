@@ -2,7 +2,7 @@
     
 <!-- Custom attributes -->    
    	<attr name="slidingMenuBackground" format="reference" />
-   	<attr name="user_row_background" format="reference"/>
+   	<attr name="user_sectionTitle_background" format="reference"/>
    	<attr name="listDivider" format="reference"/>
 <!-- End Custom attributes -->
     
@@ -11,13 +11,14 @@
         <item name="android:actionBarStyle">@style/ActionBar.Desktop</item>
         <item name="android:listChoiceBackgroundIndicator">@drawable/bkg_button_orange</item>
         <item name="android:windowBackground">@android:color/white</item>
-        <item name="android:homeAsUpIndicator">@drawable/ic_slidingmenuindicator_desktop</item>
         <item name="android:actionBarItemBackground">@drawable/bkg_button_orange</item>
         <item name="android:textColorPrimary">@color/grayDark</item>
         <item name="android:textColorSecondary">@color/gray</item>
         <item name="android:overScrollMode">never</item>
+        <item name="android:progressDrawable">@drawable/progress_horizontal_desktop</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_ab_back_desktop</item>
         <item name="slidingMenuBackground">@color/gray</item>
-        <item name="user_row_background">@drawable/bkg_userrow_desktop</item>
+        <item name="user_sectionTitle_background">@drawable/bkg_user_sectiontitle_desktop</item>
         <item name="listDivider">@color/gray</item>
    	</style>
    	

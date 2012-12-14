@@ -30,7 +30,7 @@
         android:textColor="@color/grayMiddleLight"
         android:text="17h48" />
     
-    <fr.ydelouis.overflowme.view.ScrollTextView
+    <fr.ydelouis.overflowme.common.ScrollTextView
         android:id="@+id/notifItem_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

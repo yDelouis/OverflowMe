@@ -9,12 +9,19 @@
     <color name="bronze">#CC9966</color>
     
     <color name="grayLight">#EEEEEE</color>
+    <color name="graySectionDivider">#DDDDDD</color>
     <color name="grayMiddleLight">#999999</color>
     <color name="gray">#777777</color>
     <color name="grayDark">#555555</color>
     
     <color name="orange">#FF9900</color>
     <color name="blue">#0077DD</color>
+    <color name="yellow">#E1E818</color>
+    
+    <color name="green">#008057</color>
+    <color name="greenDark">#75845C</color>
+    
+    <color name="maroon">#800000</color>
     
     
 </resources>

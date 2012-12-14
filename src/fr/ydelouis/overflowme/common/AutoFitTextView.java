@@ -1,4 +1,4 @@
-package fr.ydelouis.overflowme.view;
+package fr.ydelouis.overflowme.common;
 
 import android.content.Context;
 import android.content.res.TypedArray;

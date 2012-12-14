@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/fr.ydelouis.overflowme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<fr.ydelouis.overflowme.view.UserSectionTitle_
+         android:id="@+id/userAnswers_title"
+         style="@style/user_sectionTitle"
+         app:title="@string/answers" />
+    
+    <View style="@style/user_sectionTitle_divider"/>
+    
+    <FrameLayout
+	    android:id="@+id/userAnswers_fragment"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" />
+
+</LinearLayout>

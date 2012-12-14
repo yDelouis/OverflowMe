@@ -16,9 +16,13 @@
 	<string name="answers">Answers</string>
 	<string name="votes">Votes</string>
 	<string name="logout">Log out</string>
+	<string name="ask">Ask</string>
 	<string name="authentication">Authentication</string>
 	<string name="vibrate">Vibrate</string>
 	<string name="ringtone">Ringtone</string>
+	<string name="sort">Sort</string>
+	<string name="score">Score</string>
+	<string name="activity">Activity</string>
 	
 	<string name="menuMe_reputation">%s reputation</string>
 	
@@ -28,6 +32,12 @@
 	<string name="user_aboutMe">About me</string>
 	<string name="user_memberFor">Member for</string>
 	<string name="user_loadingUser">Loading user&#8230;</string>
+	
+	<string name="aboutMe_website">Website :</string>
+	<string name="aboutMe_aboutMeTitle">About %s :</string>
+	<string name="aboutMe_noWebsite">(no website)</string>
+	<string name="aboutMe_noAboutMe">(empty)</string>
+	<string name="aboutMe_websiteActivityTitle">%s\'s website</string>
 	
 	<string name="settings_notifs_frequencyOfUpdate">Frenquency of update</string>
 	<string name="settings_notifs_reputationChange_title">Reputation change</string>
@@ -44,5 +54,5 @@
 	<string name="notif_reputationLost">You lost %s reputation</string>
 	<string name="notif_unreadNotifsCount">%s unread notifications</string>
 	<string name="notif_reputationAndNotifsText">%1$s reputation &amp; %2$s unread notifications</string>
-    
+	
 </resources>

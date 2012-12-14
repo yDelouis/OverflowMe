@@ -8,8 +8,9 @@ import com.googlecode.androidannotations.annotations.rest.Rest;
 
 import fr.ydelouis.overflowme.api.Api;
 import fr.ydelouis.overflowme.api.Filter;
-import fr.ydelouis.overflowme.api.entity.Total;
-import fr.ydelouis.overflowme.api.entity.User;
+import fr.ydelouis.overflowme.api.entity.Badge.BadgeRequest;
+import fr.ydelouis.overflowme.api.entity.RepChange.RepChangeRequest;
+import fr.ydelouis.overflowme.api.entity.User.UserRequest;
 
 @Rest(rootUrl = Api.ROOT_URL, converters = GsonHttpMessageConverter.class)
 public interface MeRest
@@ -17,8 +18,17 @@ public interface MeRest
 	public RestTemplate getRestTemplate();
 	
 	@Get("/me?filter="+Filter.USER_COMPLETE)
-	public User.List getMe();
+	public UserRequest getMe();
 	
 	@Get("/me/tags?filter="+Filter.TOTAL)
-	public Total getNbTags();
+	public UserRequest getNbTags();
+
+	@Get("/me/reputation-history?page={page}") 
+	public RepChangeRequest getReputationHistory(int page);
+	
+	@Get("/me/reputation-history?page={page}&pagesize={pageSize}") 
+	public RepChangeRequest getReputationHistory(int page, int pageSize);
+	
+	@Get("/me/badges?page={page}&pagesize={pageSize}&order=asc&sort=name&filter="+Filter.BADGE_COMPLETE)
+	public BadgeRequest getBadges(int page, int pageSize);
 }

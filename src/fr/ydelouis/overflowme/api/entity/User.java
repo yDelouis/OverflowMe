@@ -1,9 +1,13 @@
 package fr.ydelouis.overflowme.api.entity;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class User
+public class User implements Serializable
 {
+	private static final long	serialVersionUID	= -3106905724569843593L;
+	
 	@SerializedName("user_id")
 	private int			id;
 	@SerializedName("display_name")
@@ -200,12 +204,5 @@ public class User
 		return voteDownCount + voteUpCount;
 	}
 
-	public static class List
-	{
-		private java.util.List<User>	items;
-
-		public java.util.List<User> get() {
-			return items;
-		}
-	}
+	public static class UserRequest extends Request<User>{}
 }

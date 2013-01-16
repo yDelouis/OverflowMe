@@ -66,6 +66,8 @@ public class MyStateUpdator extends BroadcastReceiver
 	protected void update(Context context) {
 		if(working)
 			return;
+		if(connectivityManager.getActiveNetworkInfo() == null)
+			return;
 		if(!connectivityManager.getActiveNetworkInfo().isConnected())
 			return;
 		working = true;
